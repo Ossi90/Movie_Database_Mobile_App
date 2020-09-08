@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>MMDB</title>
+</head>
+
+<body>
+
+    <div data-role="page" id="faidoutPage" data-theme="b" style="background-color: black;">
+        <div role="main" class="ui-content">
+            <img class="sillyImg" src=" img/logo/1.png" />
+        </div>
+    </div>
+    <div data-role="page" id="mainPage" data-theme="b">
+        <div class="header" data-role="header" data-position="fixed">
+            <h4 style="text-align: center;">Home</h4>
+            <a href="#right-panel" data-icon="gear" data-position="right" data-iconpos="notext" data-shadow="true"
+                data-iconshadow="false" class="ui-nodisc-icon"> </a>
+        </div>
+        <div role="main" class="ui-content">
+            <img class="sillyImg" src="img/logo/1.png">
+
+            <div id="status" style="margin-top: 25px;">
+                <ul class="StatusInfo" data-role="listview" style="margin: 2px; border-radius: 5px;">
+                    <li data-role="list-divider">
+                        <h4 style="text-align: center;">Previous Activities</h4>
+                    </li>
+                    <li id="totalsearches">Total Searches:</li>
+                    <li id="totalCount">Total Items in yout List:</li>
+                    <li id="lastSearch">Your latest Search:</li>
+                    <li id="latestList">Latest Film added to List:</li>
+                    <li id="latesDelet">Latest Film added to List:</li>
+                </ul>
+            </div>
+            <div style="margin-top: 40px;">
+                <div class="MainImg-container">
+                    <div id="titleMain">
+                        <h4 id="movieOfTheDay" style="text-align: center; font-family:Lucida Sans;"> Movie of the day
+                        </h4>
+                    </div>
+                    <img class="mainImg" id="MainPoster src=" jokerposter.jpg" />
+                </div>
+            </div>
+            <button id="frontPageAdd" style="margin-bottom: -30px;" class="fire ui-btn ui-icon-plus ui-btn-icon-right"
+                class="ui-btn ui-icon-plus ui-btn-icon-right"></button>
+               <button class="ui-btn ui-icon-arrow-r ui-btn-icon-right"> <a href="#infoPage" data-rel="dialog"
+                    class="moreInfoAboutMovie" id="TempID" style="color: white; text-decoration:none; "> More Info
+                    About Movie</a> </button>
+        </div>
+           <div data-role="panel" id="right-panel" data-display="push" data-position="left" data-theme="b">
+            <a href="#history" data-transition="slide" class="historybutton ui-btn">History</a>
+                 <a href="#settings" data-transition="slide" class="Settingsbutton ui-btn">Settings</a>
+                </div>
+        <div data-role="footer" data-position="fixed">
+            <div class="footer" data-role="navbar">
+                <ul>
+                    <li><a href="#listPage" data-transition="slideup" class=" ui-btn ui-shadow ui-corner-all ui-icon-bullets
+                ui-btn-icon-bottom "></a></li>
+                    <li><a href=" #searchPage" data-transition="slidedown"
+                            class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-bottom"></a>
+                    </li>
+                    <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-bottom"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="dialog" id="infoPage" data-theme="b">
+        <div data-role="header" id="x" class="exit" ;>
+            <h1 id="movieInfoHeader" style="white-space:normal;"></h1>
+        </div>
+        <div id="page-mask"></div>
+        <div data-role="content">
+            <img style="  display: block;  margin-left: auto;  margin-right: auto; width: auto;  " class="InfoPoster"
+                src="/" />
+            <div style="padding: 20px;"></div>
+            <ul data-role="listview" class="allInformation" id="allInformationID">
+                <li class="dialogInfo" id="infoTitle" style="white-space:normal;"></li>
+                <li class=" dialogInfo" id="infoYear"></li>
+                <li class="dialogInfo" id="infoReleased"></li>
+                <li class="dialogInfo" id="infoRuntime"></li>
+                <li class="dialogInfo" id="infoActors"> <b>Starring:</b>
+                    <ul id="allActers"> </ul>
+                </li>
+                <li class="dialogInfo" id="infoDirector"><b>Director:</b>
+                    <ul id="dicetorIfno"></ul>
+                </li>
+                <li class="dialogInfo" id="infoRatings"><b>Ratings:</b>
+                    <ul class="ratings">
+                        <li class="dialogInfo" id="infoIMDB-Raiting"></li>
+                        <li class="dialogInfo" id="infoRotten-Tomatop-Raiting"></li>
+                        <li class="dialogInfo" id="infoMetacritic-Raiting"></li>
+                    </ul>
+                </li>
+                <li class="dialogInfo" id="infoAwards"><b>Awards:</b>
+                    <ul id="awardInfo">
+                    </ul>
+                </li>
+                <li class="dialogInfo" id="infoCountry"></li>
+                <li class="dialogInfo" id="infoGenre"><b>Genre:</b>
+                    <ul id="genreInfo"></ul>
+                </li>
+                <li class="dialogInfo" id="BoxOffice"></li>
+                <li class="dialogInfo" id="infoMetascore"></li>
+                <li class="dialogInfo" id="infoLanguage"><b>Language:</b>
+                    <ul id="languageInfo"></ul>
+                </li>
+                <li class="dialogInfo" id="infoRated"></li>
+                <li class="dialogInfo" id="infoimdbVotes"></li>
+                <li class="dialogInfo" id="infoPlot" style="white-space:normal;"><b>Plot:</b>
+                    <ul id="fullPlotInfo"></ul>
+                </li>
+                <li class="dialogInfo" id="infoWriter" style="white-space:normal;"><b>Writers:</b>
+                    <ul id="writerInfo">
+                    </ul>
+                </li>
+                <li class="dialogInfo" id="infototalSeasons"></li>
+
+            </ul>
+        </div>
+    </div>
+    <div id="popupinfo" data-role="popup" data-position="fixed" data-overlay-theme="b" data-theme="b"
+        data-corners="false" style="text-align: center; width: auto;">
+
+        <h3 id="popUpText"></h3>
+
+    </div>
+
+    <div data-role="page" id="searchPage" data-theme="b">
+
+        <div id=position-header data-role="header" data-position="fixed">
+
+            <h4>Search</h4>
+
+            <a href="#right-search" data-icon="gear" data-iconpos="notext" data-shadow="false" data-iconshadow="true"
+                class="ui-btn-icon-right ui-nodisc-icon"></a>
+
+        </div>
+        <div role="main" class="ui-content">
+            <form method="post" id="searchBar" onsubmit="return false;">
+
+                <input type="text" name="seachInput" id="seachInput" placeholder="It's Discovery Time!">
+
+                <input id="searchButton" type="submit" value="Search!" onclick="searchMovie(1),clearDiv(),history();">
+                <fieldset data-role="collapsible">
+
+                    <legend>
+                        <h4 style="text-align: center; padding:0; margin: 0; margin-left:-27px;">Filter</h4>
+                    </legend>
+                    <fieldset>
+                        <h3>Search only by:</h3>
+                        <div data-role="fieldcontain">
+                            <label for="movieFilter">Movies:</label>
+                            <input type="checkbox" value="movie" class="searchFilter" id="movieFilter"
+                                data-role="flipswitch">
+                        </div>
+                        <div data-role="fieldcontain">
+                            <label for="serieFilter">TV Series:</label>
+                            <input type="checkbox" value="series" class="searchFilter" id="serieFilter"
+                                data-role="flipswitch">
+                        </div>
+                        <div data-role="fieldcontain">
+                            <label for="gameFilter">Video Games:</label>
+                            <input type="checkbox" value="game" class="searchFilter" id="gameFilter"
+                                data-role="flipswitch">
+                        </div>
+
+                        <input type="text" name="yearFilter" class="searchFilter" value="" id="yearFilter"
+                            placeholder="Year">
+                    </fieldset>
+                </fieldset>
+                <!-- <input id="clearSearch" type="reset" value="Clear" onclick="clearDiv();">-->
+
+            </form>
+
+               <h4 id="results" style="text-align: center;"> </h4>
+            <div id="searchContainor" class="MovieSearch">
+                <div class="SearchImg-Text" id="imgSearch"> </div>
+                <div id="SearchIntro">
+                    <h4 style="text-align: center;">With MMDB you can search for movies, TV shows, and even video games.
+                    </h4>
+                    <h4 style="text-align: center;">Currently with over 300,000 search results, and updated daily</h4>
+                </div>
+
+                <!--<img class="sillyImg2" src="img/logo/1.png" />-->
+            </div>
+        </div>
+            <div data-role="panel" id="right-search" data-display="push" data-position="left" data-theme="b">
+            <a href="#history" data-transition="slide" class="historybutton ui-btn">History</a>
+               <a href="#settings" data-transition="slide" class="Settingsbutton ui-btn">Settings</a>
+                </div>
+
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#listPage" data-transition="slideup" class=" ui-btn ui-shadow ui-corner-all ui-icon-bullets
+                ui-btn-icon-bottom "></a></li>
+                    <li><a href=" #" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-bottom"></a>
+                    </li>
+                    <li><a href="#mainPage" data-transition="slide"
+                            class="ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-bottom"></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div data-role="popup" id="ClearfromList" data-theme="b" data-overlay-theme="b" data-dismissible="false"
+        style="max-width:400px;">
+           
+         
+                 <h5 id="DeletAllList" class="ui-title" style="text-align: center;">Are you sure you want to clear your
+            list?</h5>
+         
+                <button value="no" class="deleteList ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back">Cancel</button>
+                <button value="yes" class="deleteList ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back" data-transition="flow">Clear</button>
+            
+    </div>
+
+    <div data-role="popup" id="CleactActivites" data-theme="b" data-overlay-theme="b" data-dismissible="false"
+        style="max-width:400px;">
+           
+         
+                 <h5 id="DeletAct" class="ui-title" style="text-align: center;">Are you sure you want clear you history?
+        </h5>
+         
+                <button value="no" class="deleteList1 ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back">Cancel </button>
+                <button value="yes" class="deleteList1 ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back" data-transition="flow">Clear</button>
+            
+    </div>
+    <div data-role="popup" id="ClearALL" data-theme="b" data-overlay-theme="b" data-dismissible="false"
+        style="max-width:400px;">
+           
+         
+                 <h5 id="DeletAll" class="ui-title" style="text-align: center;">Are you sure you want clear everything ?
+        </h5>
+         
+                <button value="no" class="deleteList2 ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back">Cancel</button>
+                <button value="yes" class="deleteList2 ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back" data-transition="flow">Clear</button>     
+    </div>
+
+    <div data-role="popup" id="ClearALLHistory" data-theme="b" data-overlay-theme="b" data-dismissible="false"
+        style="max-width:400px;">
+                 <h5 id="DeletAll" class="ui-title" style="text-align: center;">Are you sure you want clear everything ?
+        </h5>
+                <button value="no" class="deleteList3 ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back">Cancel</button>
+                <button value="yes" class="deleteList3 ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+            data-rel="back" data-transition="flow">Clear</button>
+            
+    </div>
+    <div data-role="page" id="listPage" data-theme="b">
+        <div data-role="header" data-position="fixed">
+            <h4>My List</h4>
+            <a href="#right-list" data-icon="gear" data-iconpos="notext" data-shadow="false" data-iconshadow="true"
+                class="ui-nodisc-icon"></a>
+        </div>
+        <div role="main" class="ui-content">
+            <button id="itemsInList" class=" " style="display: inline-block;  ">0</button>
+            <div data-role="popup" id="positionSelector" class="ui-content" data-theme="a">
+                <p id="countPopUp"></p>
+            </div>
+
+                <div id="MyListItems">
+                        <ul style="padding-left: 10px; padding-right: 10px;" id="peronalList" class="movieList "
+                    data-role="listview" data-filter="true" data-split-icon="delete" data-theme="b">
+                         
+                            </ul>
+                    </div>
+        </div>
+             <div data-role="panel" id="right-list" data-display="push" data-position="right" data-theme="b">
+            <a href="#history" data-transition="slide" class="historybutton ui-btn">History</a>
+              <a href="#settings" data-transition="slide" class="Settingsbutton ui-btn">Settings</a>     
+        </div>
+        <div data-role="popup" id="popupDialog" data-theme="b" data-overlay-theme="b" data-dismissible="false"
+            style="max-width:400px;">
+                     <h5 id="PopUpDelete" class="ui-title" style="text-align: center;">Are you sure you want to delete
+                this
+                item?</h5>
+                    <button value="no" class="deleteButton ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+                data-rel="back">Cancel</button>
+                    <button value="yes" class="deleteButton ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
+                data-rel="back" data-transition="flow">Delete</button>     
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets ui-btn-icon-bottom "></a></li>
+                    <li><a href="#searchPage" data-transition="slidedown" class=" ui-btn ui-shadow ui-corner-all ui-icon-search
+                ui-btn-icon-bottom"></a>
+                    </li>
+                    <li><a href="#mainPage" data-transition="slide"
+                            class="ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-bottom"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="history" data-theme="b">
+        <div data-role="hearder" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+
+                    <li><a href="#mainPage" data-transition="slide"
+                            class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-bottom"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div role="main" class="ui-content">
+            <div id=historyData>
+                <ul id="historyList" class="StatusInfo" data-filter="true" data-role="listview"
+                    style="margin: 2px; border-radius: 5px;">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="settings" data-theme="b">
+
+        <div data-role="hearder" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+
+                    <li><a href="#mainPage" data-transition="slide"
+                            class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-bottom"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div role="main" class="ui-content">
+            <button class="Clearhistory"
+                style=" border-radius: 10px; border-bottom-left-radius: 0%;  border-bottom-right-radius: 0%; ">Clear
+                Previous Activities</button>
+            <button class="ClearList">Clear List</button>
+            <button class="ClearAllhistory">Clear History</button>
+            <button class="ClearItemCount" style=" border-radius: 10px;
+            border-top-left-radius: 0%;
+            border-top-right-radius: 0%;">Clear All </button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+
+</body>
+
+</html>

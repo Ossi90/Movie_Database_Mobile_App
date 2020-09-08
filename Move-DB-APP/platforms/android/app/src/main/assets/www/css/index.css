@@ -1,0 +1,414 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size:12px;
+    height:100vh;
+    margin:0px;
+    padding:0px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-right, 0px);
+    text-transform:uppercase;
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app {
+    background:url(img/logo/1.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+
+
+
+
+
+.headerLogo{
+    
+    border: 5px solid;
+    border-color: black;
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.header{
+    border: 5px solid;
+    border-color: black;
+}
+
+.mainImg{
+    display: block;
+    margin: 0 auto;
+    width: 65%;
+    border: 5px solid;
+    border-color: black;
+    border: 1px solid;
+  
+
+}
+
+.MainImg-container{
+  
+    border: 1px solid;
+    border-color: rgb(47, 47, 47);
+    background: rgb(47, 47, 47);
+    border-radius: 5px;
+    margin-bottom: -7px;
+}
+
+#titleMain{
+    border: 1px solid;
+    border-color: rgb(31, 31, 31);
+    background: rgb(31, 31, 31);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#SearchTitleMain{
+    border: 1px solid;
+    border-color: rgb(31, 31, 31);
+    background: rgb(31, 31, 31);
+    border-radius: 5px;
+    margin-bottom: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+
+.mainImg-Text {
+    line-height: 0%;
+    
+    position: absolute;
+    bottom: 5%;
+    left: 8%;
+    color:rgb(255, 255, 255);
+    
+    border:0px solid;
+    border-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    width: 80%;
+}
+
+.title,.genre{
+    line-height: 0%;
+}
+.sillyText{
+    text-align: center;
+}
+
+.sillyImg{
+    width: 100%;
+    
+}
+.sillyImg2{
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+   
+}
+.ImgSearch{
+    padding: 1px;
+}
+
+
+.movieSearch{
+   
+    border:0px solid;
+    border-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgb(47, 47, 47);
+    margin-bottom: -7px;
+  
+  
+   
+}
+
+.mbsc-card-title{
+    text-align: center;
+    vertical-align: middle;
+  padding-top: 10px;
+}
+
+#posterSearch{
+ margin-top: 5px;
+    width: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
+    }
+.searchMovieText{
+    padding-left: 10px;
+}
+
+.seeMoreIfnoLink{
+    text-align: left;
+}
+
+#searchMoreInfo,#searchType,#searchYear{
+
+    font-family: Arial, Helvetica, sans-serif;
+    color:antiquewhite;
+    /*margin: 0;
+    padding: 0;  */
+    
+}
+
+.searchYearType{
+    line-height: 0em;
+    margin-top: 20px;
+  margin-left: 10px;
+ float: left
+}
+
+.searchTitle{
+   
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 0;
+    margin-top: -15px;
+    color: rgb(255, 255, 255);
+  
+}
+
+.searchListButton {
+  
+   margin-left: 77%;
+
+
+
+}
+
+#lowerIfnoButton{
+    margin-bottom: 10%;
+}
+
+.popup_content {
+    margin: 10px;
+    padding: 0 10px;
+    max-width: 60%;
+    border: 2px solid #444;
+    background: white;
+  }
+  #page-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+  }
+
+
+  .InfoPoster{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+  }
+
+
+
+  .actorsName,.genreInfo,.language,.writers{
+     
+      padding-bottom: 5px;
+  }
+  #infoIMDB-Raiting, #infoRotten-Tomatop-Raiting,#infoMetacritic-Raiting,.genreInfo,.language,.writers,.PlotInfo{
+    padding-bottom: 5px;
+  }
+
+  .InfoPoster{
+      border:5px solid;
+      border-color: #000000;
+      width: auto;
+      display: inline-block;
+      
+      }
+.myList{
+width: 10%;
+
+list-style: none;
+
+
+}
+.PlotInfo,.actorsName,.dialogInfo,.language,.writers,.genreInfo{
+    list-style-type: none;
+}
+#popupinfo{
+    width: 70%;
+ white-space:normal;
+     font-size: small"
+}
+.dialogInfo{
+    white-space:normal;
+}
+
+#count{
+   
+border: 2px solid;
+border-color: rgb(53, 52, 52);
+background: rgb(41, 41, 41);
+border-radius: 5px;
+
+margin-bottom: -20px;
+margin-top: 0px;
+
+
+}
+.SearchImg-Text{
+    list-style-type: none;
+    
+}
+#itemsInList{
+ border: 1px solid;
+ border-color: #000000;
+ background:rgb(61, 61, 61);
+ border-radius: 5px;
+ padding: 10px;
+ position: relative;
+ float: right;
+ margin-top: 0px;
+ width: auto;
+ margin-right: 50;
+ 
+}
+
+
+/*****************************************************************************************************************************************/
+#intro{
+
+ display: block;
+  width: 100%;
+   margin-left: auto;
+    margin-right: auto;
+     margin-top:auto;
+      margin-bottom: auto;
+  
+}
+
+#SearchIntro {
+    padding: 5px;
+    border: 1px solid;
+    border-color:rgb(53, 52, 52);
+    background:rgb(41, 41, 41);
+    border-radius: 5px;
+    margin-bottom: -7px;
+}
+
+.historybutton,.Clearhistory{
+    border-radius: 10px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+.Settingsbutton,.ClearItemCount{
+    border-radius: 10px;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+}
+#NoHistory{
+    padding: 20px;
+    border: 1px solid;
+    border-color:rgb(27, 27, 27);
+    background:rgb(56, 56, 56);
+    border-radius: 5px;
+ text-align: center;
+   margin-left: auto;
+    margin-right: auto;
+     margin-top:auto;
+      margin-bottom: auto;
+    
+}

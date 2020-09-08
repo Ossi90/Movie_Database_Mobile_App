@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "MMDB",
+  "short_name": "MMDB",
+  "version": "io.cordova.hellocordova",
+  "description": "A Simple Movie Database.",
+  "author": "Apache Cordova Team",
+  "icons": [],
+  "start_url": "index.html"
+}
