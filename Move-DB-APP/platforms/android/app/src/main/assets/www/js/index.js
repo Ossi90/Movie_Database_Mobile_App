@@ -4,7 +4,7 @@ $("#ClearALL").hide();//hides popup
 $("#ClearALLHistory").hide();//hides popup
 
 //This function locates the current location in the browser, waits and then changes the location 
-if (window.location.hash === "" || window.location.hash === "#faidoutPage" || window.location.hash === "#") {
+/*if (window.location.hash === "" || window.location.hash === "#faidoutPage" || window.location.hash === "#") {
     setTimeout(() => {
         $(location).attr('href', '#mainPage');
         $("#faidoutPage").remove();
@@ -15,7 +15,7 @@ if (window.location.hash === "" || window.location.hash === "#faidoutPage" || wi
         $("#faidoutPage").remove();
     }, 5000);
 
-}
+}*/
 
 var inject,
     all,
@@ -63,7 +63,7 @@ var searchByID = "i";
 var type = "";
 // asynchronous function to call the API and resolve a promise.
 async function getMovie(request, search, year, page) { // parameters for the API used depending on search request.
-    const key = "ADD YOUR OMDB API KEY HERE"; // the API key to be able to fetch data.
+    const key = "237f1e2a"; // the API key to be able to fetch data.
     let getThisMovie;
 
     if (year >= 1850) {
